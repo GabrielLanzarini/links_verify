@@ -7,11 +7,12 @@ class LinksService {
         try {
             const findUser = await Links.findOne({ where: { user: user } })
             if (!findUser) throw new CustomError("User not Found!", 404)
-            const arrayFilter = findUser.link
-                .slice(1, -1)
-                .split(",")
-                .map((item) => item.replace(/"/g, ""))
-            return arrayFilter
+            // if (findUser.link.length == 1) return findUser.link
+            // const arrayFilter = findUser.link
+            //     .slice(1, -1)
+            //     .split(",")
+            //     .map((item) => item.replace(/"/g, ""))
+            return findUser.link
         } catch (err) {
             throw err
         }
@@ -62,6 +63,7 @@ class LinksService {
     async delete(user, id) {
         const links = await this.getLinks(user)
         const findUser = await Links.findOne({ where: { user: user } })
+        console.log(links)
         links.splice(id, 1)
         try {
             findUser.link = links

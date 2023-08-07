@@ -1,9 +1,9 @@
 "use strict"
 
-import { DataType } from "sequelize"
-import Links from "../models/links.js"
+const { DataType } = require("sequelize")
+const Links = require("../models/links.js")
 
-export default {
+module.exports = {
     async up(queryInterface, Sequelize) {
         await queryInterface.createTable("link", Links.getAttributes())
     },

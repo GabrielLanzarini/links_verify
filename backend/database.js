@@ -2,11 +2,11 @@ const { Sequelize } = require("sequelize")
 
 const sequelize = new Sequelize({
     dialect: "postgres",
-    host: "localhost",
+    host: "db",
     username: "postgres",
     password: "postgres",
     database: "links_verify",
-    port: 5444,
+    port: 5432,
     define: {
         freezeTableName: true,
     },

@@ -35,6 +35,16 @@ sendLinkRequest.post("/create/:user", async (req, res) => {
     }
 })
 
+sendLinkRequest.get("/get/users", async (req, res) => {
+    try {
+        console.log("chefue")
+        const user = await service.getUser()
+        res.status(200).json({ user })
+    } catch (err) {
+        res.status(err.status || 404).json(err.message)
+    }
+})
+
 sendLinkRequest.put("/update/:user", async (req, res) => {
     const { user } = req.params
     const { links } = req.body

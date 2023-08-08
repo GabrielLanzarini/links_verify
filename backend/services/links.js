@@ -7,12 +7,16 @@ class LinksService {
         try {
             const findUser = await Links.findOne({ where: { user: user } })
             if (!findUser) throw new CustomError("User not Found!", 404)
-            // if (findUser.link.length == 1) return findUser.link
-            // const arrayFilter = findUser.link
-            //     .slice(1, -1)
-            //     .split(",")
-            //     .map((item) => item.replace(/"/g, ""))
-            return findUser.link
+            return findUser
+        } catch (err) {
+            throw err
+        }
+    }
+
+    async getUser() {
+        try {
+            const findUser = await Links.findAll()
+            return findUser
         } catch (err) {
             throw err
         }
@@ -26,8 +30,8 @@ class LinksService {
                     try {
                         const linksRequest = await axios.get(a)
                         return { link: a, status: linksRequest.status }
-                    } catch (error) {
-                        return { link: a, status: error.response ? error.response.status : "Error" }
+                    } catch (err) {
+                        if (err.code == "ERR_FR_TOO_MANY_REDIRECTS") return { link: a, status: 301 }
                     }
                 })
             )
@@ -52,8 +56,8 @@ class LinksService {
         const links = await this.getLinks(user)
         const findUser = await Links.findOne({ where: { user: user } })
         try {
-            links.push(linksParam)
-            findUser.link = links
+            links.link.push(linksParam)
+            findUser.link = links.link
             await findUser.save()
         } catch (err) {
             throw err
@@ -63,10 +67,9 @@ class LinksService {
     async delete(user, id) {
         const links = await this.getLinks(user)
         const findUser = await Links.findOne({ where: { user: user } })
-        console.log(links)
-        links.splice(id, 1)
+        links.link.splice(id, 1)
         try {
-            findUser.link = links
+            findUser.link = links.link
             findUser.save()
         } catch (err) {
             throw err

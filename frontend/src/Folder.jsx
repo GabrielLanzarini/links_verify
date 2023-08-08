@@ -9,7 +9,7 @@ export default function App() {
 
     const handleRemove = async (id) => {
         await axios.delete(`http://localhost:5000/links/delete/${user}/${id}`)
-        handleLinks()
+        await handleLinks()
     }
 
     const handleLinks = async () => {
@@ -42,7 +42,7 @@ export default function App() {
 
     return (
         <div className="w-screen h-screen p-4 bg-white">
-            <div className={`${style.screnAnimation} w-full h-full  bg-[#f9f5ff] flex justify-center items-center overflow-hidden`}>
+            <div className={`${style.screnAnimation} w-full h-full  bg-[#f9f5ff] flex justify-center items-center overflow-x-hidden`}>
                 <div className="w-full flex flex-col items-center justify-center gap-4">
                     <Link to="/" className={`fixed top-10 left-10  font-bold  text-3xl text-[#28262C] `}>
                         Link_<span className="text-[#998FC7]">Verify</span>

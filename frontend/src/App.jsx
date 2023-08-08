@@ -24,7 +24,7 @@ export default function App() {
 
     return (
         <div className="w-screen h-screen p-4 bg-white">
-            <div className={`${style.screnAnimation} w-full h-full  bg-[#f9f5ff] flex justify-center items-center overflow-hidden`}>
+            <div className={`${style.screnAnimation} w-full h-full bg-[#f9f5ff] flex justify-center items-center`}>
                 <div className="flex flex-col items-center justify-center gap-4">
                     <h1 className={`${style.tests} font-bold  text-5xl text-[#28262C] `}>
                         Link_<span className="text-[#998FC7]">Verify</span>

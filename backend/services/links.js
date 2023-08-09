@@ -75,6 +75,14 @@ class LinksService {
             throw err
         }
     }
+
+    async deleteUser(user) {
+        try {
+            await Links.destroy({ where: { user: user } })
+        } catch (err) {
+            throw err
+        }
+    }
 }
 
 module.exports = LinksService

@@ -27,6 +27,7 @@ sendLinkRequest.get("/verify/:user", async (req, res) => {
 sendLinkRequest.post("/create/:user", async (req, res) => {
     const { user } = req.params
     const { links } = req.body
+    console.log(links, user)
     try {
         await service.create(user, links)
         res.status(204).json({ message: "successfully added links!" })
@@ -61,6 +62,16 @@ sendLinkRequest.delete("/delete/:user/:id", async (req, res) => {
     try {
         await service.delete(user, id)
         res.status(204).json({ message: "successfully deleted link!" })
+    } catch (err) {
+        res.status(err.status || 404).json(err.message)
+    }
+})
+
+sendLinkRequest.delete("/delete/user/:user", async (req, res) => {
+    const { user } = req.params
+    try {
+        await service.deleteUser(user)
+        res.status(204).json({ message: "successfully deleted user!" })
     } catch (err) {
         res.status(err.status || 404).json(err.message)
     }

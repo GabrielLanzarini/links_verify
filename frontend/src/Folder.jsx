@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom"
 import axios from "axios"
-import style from "./styles/animation.module.css"
+import "./styles/animation.css"
 import { useEffect, useState } from "react"
 
 export default function App() {
@@ -14,6 +14,7 @@ export default function App() {
 
     const handleLinks = async () => {
         const { data } = await axios.get(`http://localhost:5000/links/${user}`)
+        console.log(data);
         const tempArr = []
         data.link.map((a, i) => {
             tempArr.push([
@@ -42,7 +43,7 @@ export default function App() {
 
     return (
         <div className="w-screen h-screen p-4 bg-white">
-            <div className={`${style.screnAnimation} w-full h-full  bg-[#f9f5ff] flex justify-center items-center overflow-x-hidden`}>
+            <div className={`screnAnimation w-full h-full  bg-[#f9f5ff] flex justify-center items-center overflow-x-hidden`}>
                 <div className="w-full flex flex-col items-center justify-center gap-4">
                     <Link to="/" className={`fixed top-10 left-10  font-bold  text-3xl text-[#28262C] `}>
                         Link_<span className="text-[#998FC7]">Verify</span>

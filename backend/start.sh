@@ -1,4 +1,5 @@
 
-yarn run dev & sleep 10
-yarn run migration
+yarn run migration &
+sleep 5
+yarn run dev 
 tail -f /dev/null

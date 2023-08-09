@@ -1,39 +1,40 @@
 version: "3"
 services:
-  db:
-    image: postgres
-    restart: always
-    ports:
-      - "5444:5432"
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_DB: links_verify
-    networks:
-      - mynw
+    db:
+        image: postgres
+        restart: always
+        ports:
+            - "5444:5432"
+        environment:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_DB: links_verify
+        networks:
+            - mynw
 
-  frontend:
-    build:
-      context: ./frontend
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app
-    networks:
-      - mynw
+    frontend:
+        build:
+            context: ./frontend
+        volumes:
+            - ./frontend/build:/usr/share/nginx/html
+        ports:
+            - "8080:80"
+        environment:
+            - NGINX_HOST=foobar.com
+            - NGINX_PORT=80
 
-  backend:
-    build:
-      context: ./backend
-    depends_on:
-      - db
-    ports:
-      - "5000:5000"
-    volumes:
-      - ./backend:/app
-    networks:
-      - mynw
+    backend:
+        build:
+            context: ./backend
+        depends_on:
+            - db
+        ports:
+            - "5000:5000"
+        volumes:
+            - ./backend:/app
+        networks:
+            - mynw
 
 networks:
-  mynw:
-    driver: bridge
+    mynw:
+        driver: bridge

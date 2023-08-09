@@ -1,37 +1,39 @@
 version: "3"
 services:
-    db:
-        image: postgres
-        restart: always
-        ports:
-            - "5444:5432"
-        environment:
-            POSTGRES_PASSWORD: postgres
-            POSTGRES_USER: postgres
-            POSTGRES_DB: links_verify
-        networks:
-            - mynw
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5444:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: links_verify
+    networks:
+      - mynw
 
-    frontend:
-        build:
-            context: ./frontend
-        ports:
-            - "3000:3000"
-        volumes:
-            - ./frontend:/app
-        networks:
-            - mynw
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    networks:
+      - mynw
 
-    backend:
-        build:
-            context: ./backend
-        ports:
-            - "5000:5000"
-        volumes:
-            - ./backend:/app
-        networks:
-            - mynw
+  backend:
+    build:
+      context: ./backend
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+    networks:
+      - mynw
 
 networks:
-    mynw:
-        driver: bridge
+  mynw:
+    driver: bridge

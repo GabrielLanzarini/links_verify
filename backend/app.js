@@ -6,13 +6,13 @@ const sequelize = require("./database")
 const app = express()
 
 sequelize.authenticate().then(() => {
-    app.use(express.json())
+  app.use(express.json())
 
-    app.use(cors())
+  app.use(cors())
 
-    app.use(routes)
+  app.use(routes)
 
-    app.listen(5000, () => {
-        console.log("http://localhost:5000")
-    })
+  app.listen(5000, () => {
+    console.log("http://localhost:5000")
+  })
 })

@@ -3,24 +3,24 @@
         "username": "postgres",
         "password": "postgres",
         "database": "links_verify",
-        "host": "localhost",
+        "host": "db",
         "dialect": "postgres",
-        "port": 5444
+        "port": 5432
     },
     "test": {
         "username": "postgres",
         "password": "postgres",
         "database": "links_verify",
-        "host": "localhost",
+        "host": "db",
         "dialect": "postgres",
-        "port": 5444
+        "port": 5432
     },
     "production": {
         "username": "postgres",
         "password": "postgres",
         "database": "links_verify",
-        "host": "localhost",
+        "host": "db",
         "dialect": "postgres",
-        "port": 5444
+        "port": 5432
     }
 }

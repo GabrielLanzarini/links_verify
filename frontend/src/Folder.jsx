@@ -14,7 +14,7 @@ export default function App() {
 
     const handleLinks = async () => {
         const { data } = await axios.get(`http://localhost:5000/links/${user}`)
-        console.log(data);
+        if (data.link.lenght === 0) return setLinks(null)
         const tempArr = []
         data.link.map((a, i) => {
             tempArr.push([

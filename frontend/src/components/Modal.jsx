@@ -2,15 +2,18 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 export default function Modal({ modal, handleCloseModal, refreshLinks }) {
+    const [err, setErr] = useState("")
     const [data, setData] = useState({
         folder: "",
         links: "",
     })
 
     const handleSave = async () => {
+        if (data.folder === "" || data.links === "") return setErr("Please fill in all field")
         await axios.post(`http://localhost:5000/links/create/${data.folder}`, { links: [data.links] })
         setData({ folder: "", links: "" })
         refreshLinks()
+        setErr(null)
         handleCloseModal()
     }
 
@@ -19,9 +22,10 @@ export default function Modal({ modal, handleCloseModal, refreshLinks }) {
     }, [data])
 
     return (
-        <div ref={modal} className={`animate__animated hidden w-[400px]  h-full z-10 absolute top-0 items-center`}>
+        <div ref={modal} className={` animate__animated hidden w-[400px]  h-full z-10 absolute top-0 items-center`}>
             <div className="gap-4 relative flex flex-col items-center justify-center w-full h-[300px] p-10 bg-white rounded-md drop-shadow-[0_0_10px_rgba(0,0,0,0.15)]">
-                <div className="flex flex-col gap-4 w-full">
+                <div className="flex flex-col gap-4 w-full relative">
+                    {err && <p className="absolute top-[-20px] text-sm text-red-400 ">{err}</p>}
                     <input
                         className="bg-gray-100 font-thin w-full px-4 py-2 rounded-md"
                         value={data.folder}

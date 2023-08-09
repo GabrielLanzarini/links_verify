@@ -67,8 +67,10 @@ sendLinkRequest.delete("/delete/:user/:id", async (req, res) => {
     }
 })
 
-sendLinkRequest.delete("/delete/user/:user", async (req, res) => {
+sendLinkRequest.delete("/user/:user", async (req, res) => {
+    console.log("awdawd");
     const { user } = req.params
+    console.log(user);
     try {
         await service.deleteUser(user)
         res.status(204).json({ message: "successfully deleted user!" })

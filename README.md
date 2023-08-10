@@ -23,6 +23,7 @@
 
 - Organize your URLs into folders.
 - Add new URLs to your folders.
+- Check the status of your URLs that are inside your folder.
 
 ## Technologies Used
 

@@ -71,6 +71,8 @@ $ cd ..
 $ docker-compose up --build
 ```
 
+Now just access http://localhost:8080
+
 ## Contributing
 
 Contributions are more than welcome! If you encounter a bug, have suggestions for improvements, or want to add new features, feel free to open an issue or send a pull request.

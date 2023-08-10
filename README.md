@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Links_verify</h1>
+  <h1>Link_verify</h1>
 </div>
 
 # Table of Contents
@@ -17,7 +17,7 @@
 ## Project Description
 <img src="./img/initialPage.png" alt="Initial Page">
 
-**Links_verify** is a simple and effective application to check the validity of URLs. With this tool, you can easily verify if the links you have are active and accessible, saving time and ensuring a positive experience for users.
+**Link_verify** is a simple and effective application to check the validity of URLs. With this tool, you can easily verify if the links you have are active and accessible, saving time and ensuring a positive experience for users.
 
 ## Key Features
 

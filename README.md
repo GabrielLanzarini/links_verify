@@ -57,7 +57,7 @@ $ npm install
 # Build the project
 $ npm run build
 
-# Navigate back to the root folder
+# Navigate back to the backend folder
 $ cd ..
 $ cd backend
 

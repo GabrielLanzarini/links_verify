@@ -24,14 +24,16 @@ class LinksService {
 
     async verify(user) {
         try {
-            const links = await this.getLinks(user)
+            const { dataValues } = await this.getLinks(user)
             const linksStatus = await Promise.all(
-                links.map(async (a) => {
+                dataValues.link.map(async (a) => {
                     try {
                         const linksRequest = await axios.get(a)
+                        console.log(linksRequest)
                         return { link: a, status: linksRequest.status }
                     } catch (err) {
                         if (err.code == "ERR_FR_TOO_MANY_REDIRECTS") return { link: a, status: 301 }
+                        return { link: a, status: 404 }
                     }
                 })
             )

@@ -13,7 +13,7 @@ const Links = sequelize.define(
             type: DataTypes.STRING(40),
         },
         link: {
-            type: DataTypes.ARRAY(DataTypes.STRING),
+            type: DataTypes.ARRAY(DataTypes.STRING(400)),
         },
     },
     {

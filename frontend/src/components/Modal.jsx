@@ -17,12 +17,8 @@ export default function Modal({ modal, handleCloseModal, refreshLinks }) {
         handleCloseModal()
     }
 
-    useEffect(() => {
-        console.log(data)
-    }, [data])
-
     return (
-        <div ref={modal} className={` animate__animated hidden w-[400px]  h-full z-10 absolute top-0 items-center`}>
+        <div ref={modal} className={`animate__animated hidden sm:w-[150px] w-[400px]  h-full z-10 absolute top-0 items-center`}>
             <div className="gap-4 relative flex flex-col items-center justify-center w-full h-[300px] p-10 bg-white rounded-md drop-shadow-[0_0_10px_rgba(0,0,0,0.15)]">
                 <div className="flex flex-col gap-4 w-full relative">
                     {err && <p className="absolute top-[-20px] text-sm text-red-400 ">{err}</p>}

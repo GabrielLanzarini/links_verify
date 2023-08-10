@@ -27,7 +27,6 @@ sendLinkRequest.get("/verify/:user", async (req, res) => {
 sendLinkRequest.post("/create/:user", async (req, res) => {
     const { user } = req.params
     const { links } = req.body
-    console.log(links, user)
     try {
         await service.create(user, links)
         res.status(204).json({ message: "successfully added links!" })
@@ -38,7 +37,6 @@ sendLinkRequest.post("/create/:user", async (req, res) => {
 
 sendLinkRequest.get("/get/users", async (req, res) => {
     try {
-        console.log("chefue")
         const user = await service.getUser()
         res.status(200).json({ user })
     } catch (err) {
@@ -68,9 +66,7 @@ sendLinkRequest.delete("/delete/:user/:id", async (req, res) => {
 })
 
 sendLinkRequest.delete("/user/:user", async (req, res) => {
-    console.log("awdawd");
     const { user } = req.params
-    console.log(user);
     try {
         await service.deleteUser(user)
         res.status(204).json({ message: "successfully deleted user!" })
